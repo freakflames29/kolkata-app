@@ -1,0 +1,25 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/ABeeZee-Regular.ttf",
+      "sha1": "3228dce6045041ccde6ce7a12ebbcc52bbc257bd"
+    },
+    {
+      "path": "assets/fonts/AbrilFatface-Regular.ttf",
+      "sha1": "545553bf8733c6edc2846ba1b420f19e4a6ff2de"
+    },
+    {
+      "path": "assets/fonts/LibreCaslonText-Bold.ttf",
+      "sha1": "5f26f2b1814c5b6e7c96c9cf2c67252f647a3292"
+    },
+    {
+      "path": "assets/fonts/LibreCaslonText-Italic.ttf",
+      "sha1": "9a9283619f47bd99399e545f32befe1f750a728f"
+    },
+    {
+      "path": "assets/fonts/LibreCaslonText-Regular.ttf",
+      "sha1": "9b11268cc82990340feefc434a869dd12d7fc1f0"
+    }
+  ]
+}
