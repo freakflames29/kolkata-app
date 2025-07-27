@@ -14,6 +14,32 @@ class LocationEnablerModule(reactContext: ReactApplicationContext) : ReactContex
     override fun getName() = "LocationEnabler"
 
     @ReactMethod
+    fun isLocationEnabled(promise: Promise) {
+        val activity: Activity = currentActivity ?: run {
+            promise.reject("NO_ACTIVITY", "No foreground activity!")
+            return
+        }
+
+        val locationRequest = LocationRequest
+            .Builder(Priority.PRIORITY_HIGH_ACCURACY, 10000)
+            .build()
+
+        val builder = LocationSettingsRequest
+            .Builder()
+            .addLocationRequest(locationRequest)
+
+        val settingsClient = LocationServices.getSettingsClient(activity)
+        val task = settingsClient.checkLocationSettings(builder.build())
+
+        task.addOnSuccessListener {
+            promise.resolve(true)
+        }
+        task.addOnFailureListener { ex ->
+            promise.resolve(false)
+        }
+    }
+
+    @ReactMethod
     fun promptForEnableLocation(promise: Promise) {
         val activity: Activity = currentActivity ?: run {
             promise.reject("NO_ACTIVITY", "No foreground activity!")

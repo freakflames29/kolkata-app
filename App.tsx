@@ -9,8 +9,10 @@ function App() {
 
   const enableLocation = async ()=>{
     try{
+      const status= await LocationEnabler.isLocationEnabled();
       const result = await LocationEnabler.promptForEnableLocation();
       console.log(result);
+      console.log("The status is "+status);
       
 
     }catch(e){
@@ -34,6 +36,7 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor:"white"
   },
 });
 
