@@ -1,20 +1,32 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+
 
 import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-
+import { Button, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
+import LocationEnabler from './src/LocationEnabler';
+import { useEffect } from 'react';
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
+  const enableLocation = async ()=>{
+    try{
+      const result = await LocationEnabler.promptForEnableLocation();
+      console.log(result);
+      
+
+    }catch(e){
+      console.error(e);
+    }
+  }
+
+  useEffect(()=>{
+    enableLocation();
+  },[]);
+
+
   return (
     <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
+      <Text>Location Enabler</Text>
+      <Button title="Enable Location" onPress={enableLocation} />
     </View>
   );
 }
