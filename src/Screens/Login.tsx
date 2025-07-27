@@ -1,5 +1,5 @@
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import imagePath from '../utils/imagePath';
 import useResponsiveDimensions from '../hooks/useResponsiveDimensions';
 import BlankSpace from '../Components/BlankSpace';
@@ -10,6 +10,9 @@ import CustomButton from '../Components/CustomButton';
 
 const Login = () => {
   const { wp, hp } = useResponsiveDimensions();
+  console.log("Hello")
+
+  const [name,setName] = useState<string>()
 
   const styles = StyleSheet.create({
     imageBackground: {
@@ -61,6 +64,8 @@ const Login = () => {
         <CustomTextInput
           placeholder="Email"
           backgroundColor="rgba(255,255,255,0.5)"
+          value={name}
+          onChangeText={t=>setName(t)}
         />
         <CustomTextInput
           placeholder="Password"
